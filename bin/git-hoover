@@ -1,0 +1,5 @@
+#!/bin/sh
+#
+# Fetch latest from all repos in current directory
+
+find . -name .git -type d -prune -exec sh -c 'pushd "$(dirname $1)" && git fetch --all' _ {} \;

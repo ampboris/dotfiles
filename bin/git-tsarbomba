@@ -1,0 +1,19 @@
+#!/bin/sh
+#
+# Nukes all uncomitted changes and cleans all repos in current directory
+
+echo "!!!!!!!!!!!!!!!"
+echo "!!! WARNING !!!"
+echo "!!!!!!!!!!!!!!!"
+echo ""
+echo "This will delete all uncommitted changes AND cleanup all untracked files in the current working tree"
+echo ""
+read -p "Do you want to proceed? (yes/no) " yn
+
+case $yn in 
+	yes ) echo Booooooooooooooooom!;;
+	* ) echo aborting...;
+		exit;;
+esac
+
+find . -name .git -type d -prune -exec sh -c 'pushd "$(dirname $1)" && git clean -dxf' _ {} \;

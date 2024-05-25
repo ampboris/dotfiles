@@ -1,0 +1,5 @@
+#!/bin/sh
+#
+# Lists all repos in current directory tree
+
+find . -name .git -type d -prune -exec sh -c 'echo "$(dirname $1)"' _ {} \;
